@@ -37,7 +37,7 @@
 	<header>
 		<nav>
 			<ul>
-				<li><a href="#about">About</a></li>
+				<li><a href="#about" class="about">About</a></li>
 				<li><a href="https://www.instagram.com/soul.portfolio" target="_blank">Portfolio</a></li>
 				<li><a href="mailto:info@soul.graphics">Contact</a></li>
 			</ul>
@@ -45,28 +45,39 @@
 	</header>
 
 	<main>
-		<div class="image" style="background-image: url(/img/01.jpg);"></div>
-		<div class="image" style="background-image: url(/img/02.jpg);"></div>
-		<div class="image" style="background-image: url(/img/03.jpg);"></div>
-		<div class="image" style="background-image: url(/img/04.jpg);"></div>
-		<div class="image" style="background-image: url(/img/05.jpg);"></div>
-		<div class="image" style="background-image: url(/img/06.jpg);"></div>
-		<div class="image" style="background-image: url(/img/07.jpg);"></div>
-		<div class="image" style="background-image: url(/img/08.jpg);"></div>
-		<div class="image" style="background-image: url(/img/09.jpg);"></div>
-		<div class="image" style="background-image: url(/img/10.jpg);"></div>
-		<div class="image" style="background-image: url(/img/11.jpg);"></div>
-		<div class="image" style="background-image: url(/img/12.jpg);"></div>
-		<div class="image" style="background-image: url(/img/13.jpg);"></div>
-		<div class="image" style="background-image: url(/img/16.jpg);"></div>
-		<div class="image" style="background-image: url(/img/18.jpg);"></div>
-		<div class="image" style="background-image: url(/img/20.jpg);"></div>
-		<div class="image" style="background-image: url(/img/23.jpg);"></div>
-		<div class="image" style="background-image: url(/img/24.jpg);"></div>
+		<div id="backgrounds">
+			<div class="image" style="background-image: url(/img/01.jpg);"></div>
+			<div class="image" style="background-image: url(/img/02.jpg);"></div>
+			<div class="image" style="background-image: url(/img/03.jpg);"></div>
+			<div class="image" style="background-image: url(/img/04.jpg);"></div>
+			<div class="image" style="background-image: url(/img/05.jpg);"></div>
+			<div class="image" style="background-image: url(/img/06.jpg);"></div>
+			<div class="image" style="background-image: url(/img/07.jpg);"></div>
+			<div class="image" style="background-image: url(/img/08.jpg);"></div>
+			<div class="image" style="background-image: url(/img/09.jpg);"></div>
+			<div class="image" style="background-image: url(/img/10.jpg);"></div>
+			<div class="image" style="background-image: url(/img/11.jpg);"></div>
+			<div class="image" style="background-image: url(/img/12.jpg);"></div>
+			<div class="image" style="background-image: url(/img/13.jpg);"></div>
+			<div class="image" style="background-image: url(/img/16.jpg);"></div>
+			<div class="image" style="background-image: url(/img/18.jpg);"></div>
+			<div class="image" style="background-image: url(/img/20.jpg);"></div>
+			<div class="image" style="background-image: url(/img/23.jpg);"></div>
+			<div class="image" style="background-image: url(/img/24.jpg);"></div>
+		</div>
+
+		<div id="about">
+			<div class="inner">
+				<a href="#" id="close"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27"><line x1="1.5" y1="1.5" x2="25.5" y2="25.5"/><line x1="25.5" y1="1.5" x2="1.5" y2="25.5"/></svg></a>
+				<img src="img/soul.svg" class="logo" alt="Soül">
+				<p>Hi! My name is Saül and I work as a graphic designer and art director. I’ve been doing this all my life and I consider myself very lucky to do a job I enjoy. I have lived and worked in London and Barcelona. Through graphic design and art direction I move myself around disciplines like: branding, digital design, editorial design or packaging.</p>
+				<p>Soül is my personal brand, a mixure between my name and the concept “soul”. Every project I work on, every brand I create or touch has a soul inside. Getting there is my main tool to develop the way it will communicate itself to the world in an authentic and unique way.</p>
+			</div>
+		</div>
 	</main>
 
 	<script type="text/javascript">
-		var num_images = document.querySelectorAll('main .image').length;
+		var num_images = document.querySelectorAll('#backgrounds .image').length;
 		var current = null;
 
 		function nextImageIndex(){
@@ -75,7 +86,7 @@
 
 		function showImage(){
 			var i = nextImageIndex();
-			var next = document.querySelectorAll('main .image')[i - 1];
+			var next = document.querySelectorAll('#backgrounds .image')[i - 1];
 
 			if(current) current.classList.remove('active');
 			next.classList.add('active');
@@ -84,6 +95,19 @@
 
 		showImage();
 		var interval = setInterval(showImage, 5000);
+
+		var about = document.querySelectorAll('header nav a.about')[0];
+		var close = document.getElementById('close');
+
+		about.addEventListener('click', function(event){
+			event.preventDefault();
+			document.body.classList.add('about');;
+		}, false);
+
+		close.addEventListener('click', function(event){
+			event.preventDefault();
+			document.body.classList.remove('about');;
+		}, false);
 	</script>
 </body>
 </html>
