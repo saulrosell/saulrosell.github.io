@@ -2,11 +2,88 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Soül</title>
-  <meta name="description" content="">
+  <title>Soül — Graphic designer and art director</title>
+  <meta name="description" content="Hi! My name is Saül and I work as a graphic designer and art director.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="apple-touch-icon" href="/icon.png">
+  <link rel="icon" type="image/png" href="/favicon.png">
+
+  <meta name="robots" content="noodp">
+  <meta name="referrer" content="unsafe-url">
+
+  <meta name="geo.region" content="ES-CT">
+  <meta name="geo.placename" content="Barcelona">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@saulrosell">
+  <meta name="twitter:title" content="Soül — Graphic designer and art director">
+  <meta name="twitter:description" content="Hi! My name is Saül and I work as a graphic designer and art director.">
+  <meta name="twitter:image" content="https://soül.com/tile.png">
+  <meta name="twitter:creator" content="@saulrosell" />
+
+  <meta property="og:title" content="Soül — Graphic designer and art director" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://soül.com" />
+  <meta property="og:image" content="https://soül.com/tile.png" />
+  <meta property="og:description" content="Hi! My name is Saül and I work as a graphic designer and art director." />
+  <meta property="og:site_name" content="Soül" />
+  <meta property="og:locale" content="en_US" />
+
+  <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
-  <h1>Soül.com on github!</h1>
+	<header>
+		<nav>
+			<ul>
+				<li><a href="#about">About</a></li>
+				<li><a href="https://www.instagram.com/soul.portfolio" target="_blank">Portfolio</a></li>
+				<li><a href="mailto:info@soul.graphics">Contact</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+		<div class="image" style="background-image: url(/img/01.jpg);"></div>
+		<div class="image" style="background-image: url(/img/02.jpg);"></div>
+		<div class="image" style="background-image: url(/img/03.jpg);"></div>
+		<div class="image" style="background-image: url(/img/04.jpg);"></div>
+		<div class="image" style="background-image: url(/img/05.jpg);"></div>
+		<div class="image" style="background-image: url(/img/06.jpg);"></div>
+		<div class="image" style="background-image: url(/img/07.jpg);"></div>
+		<div class="image" style="background-image: url(/img/08.jpg);"></div>
+		<div class="image" style="background-image: url(/img/09.jpg);"></div>
+		<div class="image" style="background-image: url(/img/10.jpg);"></div>
+		<div class="image" style="background-image: url(/img/11.jpg);"></div>
+		<div class="image" style="background-image: url(/img/12.jpg);"></div>
+		<div class="image" style="background-image: url(/img/13.jpg);"></div>
+		<div class="image" style="background-image: url(/img/16.jpg);"></div>
+		<div class="image" style="background-image: url(/img/18.jpg);"></div>
+		<div class="image" style="background-image: url(/img/20.jpg);"></div>
+		<div class="image" style="background-image: url(/img/23.jpg);"></div>
+		<div class="image" style="background-image: url(/img/24.jpg);"></div>
+	</main>
+
+	<script type="text/javascript">
+		var num_images = document.querySelectorAll('main .image').length;
+		var current = null;
+
+		function nextImageIndex(){
+			return Math.ceil(Math.random() * num_images);
+		}
+
+		function showImage(){
+			var i = nextImageIndex();
+			var next = document.querySelectorAll('main .image')[i - 1];
+
+			if(current) current.classList.remove('active');
+			next.classList.add('active');
+			current = next;
+		}
+
+		showImage();
+		var interval = setInterval(showImage, 5000);
+	</script>
 </body>
 </html>
