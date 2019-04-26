@@ -84,6 +84,12 @@ nav{
 		font-size: 14px;
 	}
 
+	&.loaded{
+		&:before{
+			content: none;
+		}
+	}
+
 	.image{
 		position: absolute;
 		top: 0;

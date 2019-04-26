@@ -92,6 +92,7 @@
 		imgLoad.on('progress', function(instance, image){
 		  var result = image.isLoaded ? 'loaded' : 'broken';
 
+			backgrounds.classList.add('loaded');
 		  image.element.classList.add(result);
 
 		  if(!started){
