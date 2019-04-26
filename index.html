@@ -63,7 +63,7 @@
 			<div class="image" style="background-image: url(/img/16.jpg);"></div>
 			<div class="image" style="background-image: url(/img/18.jpg);"></div>
 			<div class="image" style="background-image: url(/img/19.jpg);"></div>
-			<div class="image" style="background-image: url(/img/20.jpg);"></div>º
+			<div class="image" style="background-image: url(/img/20.jpg);"></div>
 			<div class="image" style="background-image: url(/img/21.jpg);"></div>
 			<div class="image" style="background-image: url(/img/22.jpg);"></div>
 			<div class="image" style="background-image: url(/img/23.jpg);"></div>
@@ -82,37 +82,54 @@
 		</div>
 	</main>
 
+	<script src="/js/vendor/imagesloaded.pkgd.min.js"></script>
 	<script type="text/javascript">
-		var num_images = document.querySelectorAll('#backgrounds .image').length;
+		var started = false;
+		var interval;
+		var backgrounds = document.querySelector('#backgrounds')
+		var imgLoad = imagesLoaded(backgrounds, { background: '.image' }, function(){});
+
+		imgLoad.on('progress', function(instance, image){
+		  var result = image.isLoaded ? 'loaded' : 'broken';
+
+		  image.element.classList.add(result);
+
+		  if(!started){
+			  showImage();
+			  interval = setInterval(showImage, 5000);
+			  started = true;
+		  }
+		});
+
+		var num_images = document.querySelectorAll('#backgrounds .image.loaded').length;
 		var current = null;
 
 		function nextImageIndex(){
+			num_images = document.querySelectorAll('#backgrounds .image.loaded').length;
+
 			return Math.ceil(Math.random() * num_images);
 		}
 
 		function showImage(){
 			var i = nextImageIndex();
-			var next = document.querySelectorAll('#backgrounds .image')[i - 1];
+			var next = document.querySelectorAll('#backgrounds .image.loaded')[i - 1];
 
 			if(current) current.classList.remove('active');
 			next.classList.add('active');
 			current = next;
 		}
 
-		showImage();
-		var interval = setInterval(showImage, 5000);
-
 		var about = document.querySelectorAll('header nav a.about')[0];
 		var close = document.getElementById('close');
 
 		about.addEventListener('click', function(event){
 			event.preventDefault();
-			document.body.classList.add('about');;
+			document.body.classList.add('about');
 		}, false);
 
 		close.addEventListener('click', function(event){
 			event.preventDefault();
-			document.body.classList.remove('about');;
+			document.body.classList.remove('about');
 		}, false);
 	</script>
 </body>
