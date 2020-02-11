@@ -38,6 +38,7 @@
 		<nav>
 			<ul>
 				<li><a href="#about" class="about">About</a></li>
+				<li><a href="#reel" class="reel">Play Reel</a></li>
 				<li><a href="https://www.instagram.com/soul.portfolio" target="_blank">Portfolio</a></li>
 				<li><a href="mailto:info@soul.graphics">Contact</a></li>
 			</ul>
@@ -73,11 +74,22 @@
 
 		<div id="about">
 			<div class="inner">
-				<a href="#" id="close"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27"><line x1="1.5" y1="1.5" x2="25.5" y2="25.5"/><line x1="25.5" y1="1.5" x2="1.5" y2="25.5"/></svg></a>
+				<a href="#" class="close"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27"><line x1="1.5" y1="1.5" x2="25.5" y2="25.5"/><line x1="25.5" y1="1.5" x2="1.5" y2="25.5"/></svg></a>
 				<img src="img/soul.svg" class="logo" alt="Soül">
 				<p>Hi! My name is Saül and I work as a graphic designer and art director. I am lucky to be able to say I truly enjoy what I do, and I’ve been doing it practically all my life. I have lived and worked in London and Barcelona, been part of teams as well as managed teams, and most recently gone solo. Through graphic design and art direction I comfortably move between branding, digital design, editorial design and packaging.
 				</p>
 				<p>Soül is my personal brand, a mix between my name and the concept “soul”. Every project I work on and every brand I create or shape has a soul, which determines how an idea or product will be presented to the world in an authentic and unique way. </p>
+			</div>
+		</div>
+
+		<div id="reel">
+			<div class="inner">
+				<a href="#" class="close"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27"><line x1="1.5" y1="1.5" x2="25.5" y2="25.5"/><line x1="25.5" y1="1.5" x2="1.5" y2="25.5"/></svg></a>
+				<video id="reelvideo" width="100%" height="100%" controls>
+				  <source src="soul-reel.mp4" type="video/mp4">
+				  <source src="soul-reel.webm" type="video/webm">
+					Your browser does not support the video tag.
+				</video>
 			</div>
 		</div>
 	</main>
@@ -120,17 +132,40 @@
 			current = next;
 		}
 
+		function playVideo(){
+			setTimeout(function(){ reelvideo.play(); }, 500);
+		}
+
+		function stopVideo(){
+			reelvideo.pause();
+			setTimeout(function(){ reelvideo.load(); }, 500);
+		}
+
 		var about = document.querySelectorAll('header nav a.about')[0];
-		var close = document.getElementById('close');
+		var reel = document.querySelectorAll('header nav a.reel')[0];
+		var reelvideo = document.getElementById("reelvideo");;
+		var close = document.querySelectorAll('.close');
 
 		about.addEventListener('click', function(event){
 			event.preventDefault();
+			stopVideo();
+			document.body.classList.remove('reel');
 			document.body.classList.add('about');
 		}, false);
 
-		close.addEventListener('click', function(event){
+		for(var i = 0; i < close.length; i++){
+			close[i].addEventListener('click', function(event){
+				event.preventDefault();
+				stopVideo();
+				document.body.classList.remove('about', 'reel');
+			}, false);
+		}
+
+		reel.addEventListener('click', function(event){
 			event.preventDefault();
+			playVideo();
 			document.body.classList.remove('about');
+			document.body.classList.add('reel');
 		}, false);
 	</script>
 </body>
